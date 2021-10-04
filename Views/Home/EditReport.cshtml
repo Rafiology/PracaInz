@@ -1,0 +1,51 @@
+﻿@{ ViewData["Title"] = "Szczegóły"; }
+@model ZgloszeniaIT.Models.ReportViewModel
+
+<hr />
+<div class="container">
+    <form asp-action="EditReport" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="IdReport" />
+        <input type="hidden" asp-for="Status" />
+        <input type="hidden" asp-for="User" />
+        <input type="hidden" asp-for="Operator" />
+        <input type="hidden" asp-for="AddDate" />
+        <div class="form-group">
+            <label asp-for="Title" class="control-label">Nazwa problemu</label>
+            <input asp-for="Title" class="form-control border-primary" placeholder="Wpisz tytuł zgłoszenia" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="control-label">Opis problemu</label>
+            <textarea asp-for="Description" class="form-control border-primary" rows="4" style="resize:none;"
+                      placeholder="Wpisz treść zgłoszenia"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="row">
+            <div class="col form-group">
+                <label asp-for="Priority" class="control-label">Priorytet</label>
+                <select asp-for="Priority" class="form-control border-primary">
+                    @foreach (var item in Model.PriorityList)
+                    {
+        <option value="@item.IdPriority">@Html.DisplayFor(modelItem => item.PriorityDesc)</option>}
+                </select>
+                <span asp-validation-for="Priority" class="text-danger"></span>
+            </div>
+            <div class="col form-group">
+                <label asp-for="Category" class="control-label">Kategoria</label>
+                <select asp-for="Category" class="form-control border-primary">
+                    @foreach (var item in Model.CategoryList)
+                    {
+        <option value="@item.IdCategory">@Html.DisplayFor(modelItem => item.CategoryName)</option>}
+                </select>
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="form-group">
+                <input type="submit" value="Zaktualizuj zgłoszenie" class="btn btn-info mr-1" />
+                <a asp-action="Index" class="btn btn-secondary">Powrót do strony</a>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,43 @@
+﻿@{ ViewData["Title"] = "Strona główna"; }
+@model IEnumerable<ZgloszeniaIT.Models.ReportViewModel>
+@using Microsoft.AspNetCore.Identity
+@using ZgloszeniaIT.Models
+
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<div class="text-center">
+    <h1 class="display-5">Witaj @User.Identity.Name</h1>
+    <p>Wybierz dostępną operacje z listy poniżej</p>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 mt-5">
+    <div class="col mb-3">
+        <div class="card border-primary bg-light h-100">
+            <div class="card-body">
+                <a asp-area="" asp-controller="Home" asp-action="AddReport" class="stretched-link text-primary"><h2 class="card-title">Baza wiedzy</h2></a>
+                <p class="card-text">Przejrzyj bazę zawierającą rozwiązania często powtarzających się problemów.</p>
+            </div>
+        </div>
+    </div>
+    @if (SignInManager.IsSignedIn(User))
+    {
+    <div class="col mb-3">
+        <div class="card border-primary bg-light h-100" style="height: 150px;">
+            <div class="card-body">
+                <a asp-area="" asp-controller="Home" asp-action="AddReport" class="stretched-link text-primary"><h2 class="card-title">Dodaj zgłoszenie</h2></a>
+                <p class="card-text">Zarejestruj nowe zgłoszenie.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col mb-3">
+        <div class="card border-primary bg-light h-100">
+            <div class="card-body">
+                <a asp-area="" asp-controller="Home" asp-action="MyList" class="stretched-link text-primary"><h2 class="card-title">Lista moich zgłoszeń</h2></a>
+                <p class="card-text">Podejrzyj listę dodanych zgłoszeń.</p>
+            </div>
+        </div>
+    </div>
+    }
+</div>

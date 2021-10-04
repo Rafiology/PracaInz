@@ -1,0 +1,90 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include=".gitignore" />
+    <Content Include="Controllers\AdminController.cs" />
+    <Content Include="Controllers\HomeController.cs" />
+    <Content Include="Controllers\OperatorController.cs" />
+    <Content Include="DataAdd.sql" />
+    <Content Include="Data\ApplicationDbContext.cs" />
+    <Content Include="Migrations\20210615094023_mig1.cs" />
+    <Content Include="Migrations\20210615094023_mig1.Designer.cs" />
+    <Content Include="Migrations\ApplicationDbContextModelSnapshot.cs" />
+    <Content Include="Models\ApplicationUser.cs" />
+    <Content Include="Models\Attachment.cs" />
+    <Content Include="Models\Category.cs" />
+    <Content Include="Models\Comment.cs" />
+    <Content Include="Models\Department.cs" />
+    <Content Include="Models\ErrorViewModel.cs" />
+    <Content Include="Models\KnowledgeBase.cs" />
+    <Content Include="Models\Priority.cs" />
+    <Content Include="Models\Report.cs" />
+    <Content Include="Models\ReportViewModel.cs" />
+    <Content Include="Models\Status.cs" />
+    <Content Include="Models\UserRole.cs" />
+    <Content Include="Pages\AccessDenied.cshtml.cs" />
+    <Content Include="Pages\Login.cshtml.cs" />
+    <Content Include="Pages\Manage\ChangePassword.cshtml.cs" />
+    <Content Include="Pages\Manage\Index.cshtml.cs" />
+    <Content Include="Pages\Manage\ManageNavPages.cs" />
+    <Content Include="Pages\Register.cshtml.cs" />
+    <Content Include="Program.cs" />
+    <Content Include="Services\ApplicationRepository.cs" />
+    <Content Include="Services\IApplicationRepository.cs" />
+    <Content Include="Services\IUserRepository.cs" />
+    <Content Include="Services\UserRepository.cs" />
+    <Content Include="Startup.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\js\site.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\LICENSE" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\LICENSE.md" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\files\" />
+  </ItemGroup>
+
+</Project>

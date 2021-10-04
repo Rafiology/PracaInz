@@ -1,0 +1,52 @@
+﻿@{ ViewData["Title"] = "Lista dodanych zgłoszeń"; }
+@model IEnumerable<ZgloszeniaIT.Models.ReportViewModel>
+
+<div>
+    <h1 class="display-6">Lista zgłoszeń</h1>
+    <p>Oto twoje zgłoszenia dodane w systemie</p>
+</div>
+
+<table class="table text-dark">
+    <thead>
+        <tr>
+            <th>
+                Tytuł
+            </th>
+            <th>
+                Dodane przez
+            </th>
+            <th>
+                Operator zgłoszenia
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Operator)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                <a class="btn btn-primary mb-2" asp-action="Details" asp-route-id="@item.IdReport">Otwórz</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+

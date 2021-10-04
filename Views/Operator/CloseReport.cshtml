@@ -1,0 +1,22 @@
+﻿@{ ViewData["Title"] = "Szczegóły"; }
+@model ZgloszeniaIT.Models.ReportViewModel
+
+<div class="row">
+    <h3>Zamknięcie zgłoszenia</h3>
+</div>
+<form asp-action="CloseReport" asp-controller="Operator" class="mt-2">
+    <input type="hidden" asp-for="IdReport" />
+    <div class="row mb-3">
+        <textarea id="solution" name="solution" class="form-control border-primary" rows="4" style="resize:none;" placeholder="Wprowadź rozwiązanie zgłoszenia"></textarea>
+    @if (TempData["message"] != null)
+    {
+        <span class="text-danger">@TempData["message"]</span>
+    }
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <input type="submit" value="Zamknij zgłoszenie" class="btn btn-primary" />
+            <a class="btn btn-secondary" asp-controller="Operator" asp-action="Details" asp-route-id="@Model.IdReport">Powrót</a>
+        </div>
+    </div>
+</form>

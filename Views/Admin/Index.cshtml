@@ -1,0 +1,64 @@
+﻿@{ ViewData["Title"] = "Strona główna"; }
+@model IEnumerable<ZgloszeniaIT.Models.ReportViewModel>
+
+<div class="text-center">
+    <h1 class="display-5">Witaj administratorze</h1>
+    <p>Wybierz dostępną operacje z listy poniżej</p>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 mt-5">
+    <div class="col mb-3">
+        <div class="card border-primary bg-light h-100">
+            <div class="card-body">
+                <a asp-area="" asp-controller="Home" asp-action="AddReport" class="stretched-link text-primary"><h2 class="card-title">Baza wiedzy</h2></a>
+                <p class="card-text">Wpisy zawierające rozwiązania często powtarzających się problemów</p>
+            </div>
+        </div>
+    </div>
+    <div class="col mb-3">
+        <div class="card border-primary bg-light h-100">
+            <div class="card-body">
+                <a asp-area="" asp-controller="Home" asp-action="AddReport" class="stretched-link text-primary"><h2 class="card-title">Dodaj zgłoszenie</h2></a>
+                <p class="card-text">Zarejestruj nowe zgłoszenie dotyczące</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row row-cols-1 row-cols-md-3">
+    <div class="col mb-3">
+        <div class="card border-primary bg-light h-100">
+            <div class="card-body">
+                <a asp-page="/Register" class="stretched-link text-primary"><h2 class="card-title">Dodaj konto użytkownika</h2></a>
+                <p class="card-text">Zarejestruj nowe konto w systemie</p>
+            </div>
+        </div>
+    </div>
+    <div class="col mb-3">
+        <div class="card border-primary bg-light h-100">
+            <div class="card-body">
+                <a asp-area="" asp-controller="Home" asp-action="List" class="stretched-link text-primary"><h2 class="card-title">Lista wszystkich zgłoszeń</h2></a>
+                <p class="card-text">Przejrzyj wszystkie zarejestrowane zgłoszenia w systemie.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row row-cols-1 row-cols-md-3">
+    <div class="col mb-3">
+        <div class="card border-primary bg-light h-100">
+            <div class="card-body">
+                <a asp-area="" asp-controller="Home" asp-action="AssignedList" class="stretched-link text-primary"><h2 class="card-title">Lista realizowanych zgłoszeń</h2></a>
+                <p class="card-text">Przejrzyj wszystkie przypisane zgłoszenia.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col mb-3">
+        <div class="card border-primary bg-light h-100">
+            <div class="card-body">
+                <a asp-area="" asp-controller="Home" asp-action="ClosedList" class="stretched-link text-primary"><h2 class="card-title">Lista zamkniętych zgłoszeń</h2></a>
+                <p class="card-text">Przejrzyj wszystkie zamknięte zgłoszenia.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,120 @@
+﻿@{ ViewData["Title"] = "Szczegóły"; }
+@model ZgloszeniaIT.Models.ReportViewModel
+
+<div class="row">
+    <h1 class="col-sm-12">
+        @Model.Title
+    </h1>
+
+    <div class="col-sm-12 mb-2">
+        Utworzone @Html.DisplayFor(model => model.AddDate)
+    </div>
+
+    <div class="col-sm-12 mb-2">
+        <div class="btn btn-success">
+            <i class="fa fa-pencil" aria-hidden="true"></i> Autor: @Html.DisplayFor(model => model.User)
+        </div>
+        <div class="btn btn-danger">
+            <i class="fa fa-wrench" aria-hidden="true"></i> Realizujący: @Html.DisplayFor(model => model.Operator)
+        </div>
+        <div class="btn btn-secondary">
+            <i class="fa fa-check-circle" aria-hidden="true"></i> Status zgłoszenia: @Html.DisplayFor(model => model.Status)
+        </div>
+    </div>
+
+    <div class="col-sm-12 mb-2">
+        <div class="btn btn-light">
+            <i class="fa fa-info-circle" aria-hidden="true"></i> Priorytet: @Html.DisplayFor(model => model.Priority)
+        </div>
+        <div class="btn btn-light">
+            <i class="fa fa-tags" aria-hidden="true"></i> Kategoria: @Html.DisplayFor(model => model.Category)
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4 mb-4">
+    <div class="col-sm-12">
+        <h3 class="mb-3">Treść zgłoszenia</h3>
+        <textarea disabled rows="4" style="resize:none; width:100%;">@Model.Description</textarea>
+    </div>
+</div>
+
+<div class="row mt-2 mb-4">
+    <div class="col-sm-12">
+        <h3 class="mb-3">Rozwiązanie</h3>
+        @if (Model.Status == "Zakończony")
+        {
+            <textarea disabled rows="4" style="resize:none; width:100%;">@Model.SolutionDesc</textarea>
+        }
+        else
+        {
+            <p>To zadanie nie zostało dotychczas rozwiązane.</p>
+        }
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-sm-12">
+        <h3 class="mb-2">Załączniki</h3>
+        @if (Model.AttachmentList.Count == 0)
+        {
+            <p>(brak załączników)</p>
+        }
+        @foreach (var item in Model.AttachmentList)
+        {
+            <a href="@("/files/" + item.AttachmentPath)" download>@Html.DisplayFor(modelItem => item.AttachmentPath)</a>
+        }
+    </div>
+</div>
+
+@if (Model.Operator == "(brak)")
+{
+    <a class="btn btn-primary" asp-controller="Operator" asp-action="AssignReport" asp-route-id="@Model.IdReport">Realizuj zgłoszenie</a>
+}
+@if (Model.Operator != "(brak)" && Model.Status == "W realizacji")
+{
+    <a class="btn btn-primary" asp-controller="Operator" asp-action="CloseReport" asp-route-id="@Model.IdReport">Zamknij zgłoszenie</a>
+}
+@if (Model.Status != "Zakończony")
+{
+    <a class="btn btn-primary" asp-controller="Home" asp-action="EditReport" asp-route-id="@Model.IdReport">Edytuj zgłoszenie</a>
+}
+<a class="btn btn-secondary" asp-controller="Home" asp-action="List">Powrót</a>
+
+<form asp-action="AddComment" class="mt-4">
+    <input type="hidden" asp-for="IdReport" />
+    <div class="form-group">
+        <textarea id="Comment" name="Comment" required class="form-control border-primary" rows="4" style="resize:none;" placeholder="Wprowadź komentarz"></textarea>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Dodaj komentarz" class="btn btn-primary" />
+    </div>
+</form>
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <h3 class="mb-3">Komentarze</h3>
+        @if (Model.CommentList.Count == 0)
+        {
+            <p>Brak komentarzy do tego zgłoszenia</p>
+        }
+        @foreach (var item in Model.CommentList)
+        {
+
+            <div class="row">
+                <div class="row col-sm-12 m-0 justify-content-between bg-primary text-light">
+                    <div>
+                        @Html.DisplayFor(modelItem => item.Author)
+                    </div>
+                    <div>
+                        Dodano: @item.AddDate.ToShortTimeString(), @item.AddDate.ToShortDateString()
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <p class="mt-2">@Html.DisplayFor(modelItem => item.ComContent)</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>

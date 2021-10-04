@@ -1,0 +1,68 @@
+﻿@{ ViewData["Title"] = "Dodawanie zgłoszenia"; }
+@model ZgloszeniaIT.Models.ReportViewModel
+    <h2 class="display-7">Dodawanie zgłoszenia</h2>
+    <hr />
+    <div class="container">
+        <form asp-action="AddReport" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label">Nazwa problemu</label>
+                <input asp-for="Title" class="form-control border-primary" placeholder="Wpisz tytuł zgłoszenia" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Opis problemu</label>
+                <textarea asp-for="Description" class="form-control border-primary" rows="4" style="resize:none;"
+                          placeholder="Wpisz treść zgłoszenia"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="col form-group">
+                    <label asp-for="Priority" class="control-label">Priorytet</label>
+                    <select asp-for="Priority" class="form-control border-primary">
+                        @foreach (var item in Model.PriorityList)
+                        {
+                        <option value="@item.IdPriority">@Html.DisplayFor(modelItem => item.PriorityDesc)</option>
+}
+                    </select>
+                    <span asp-validation-for="Priority" class="text-danger"></span>
+                </div>
+                <div class="col form-group">
+                    <label asp-for="Category" class="control-label">Kategoria</label>
+                    <select asp-for="Category" class="form-control border-primary">
+                        @foreach (var item in Model.CategoryList)
+                        {
+            <option value="@item.IdCategory">@Html.DisplayFor(modelItem => item.CategoryName)</option>
+}
+                    </select>
+                    <span asp-validation-for="Category" class="text-danger"></span>
+                </div>
+            </div>
+            <label class="control-label">Dodaj załącznik</label>
+            <div class="form-group">
+                <label asp-for="File" class="control-label btn btn-primary">
+                    <i class="fa fa-cloud-upload"></i>  Wybierz plik
+                    <input asp-for="File" style="display:none;" />
+                </label>
+                <strong id="file-label">Wybrany plik:</strong>
+                <span id="file-name">(brak)</span>
+                <span asp-validation-for="File" class="text-danger"> </span>
+            </div>
+            <div class="row justify-content-center">
+                <div class="form-group">
+                    <input type="submit" value="Dodaj zgłoszenie" class="btn btn-primary mr-2" />
+                    <a asp-action="Index" class="btn ml-3 btn-secondary">Powrót do strony</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+    let inputFile = document.getElementById('File')
+    let fileName = document.getElementById('file-name')
+
+    inputFile.addEventListener('change', (event) => {
+        let uploadedFile = event.target.files[0].name
+        fileName.textContent = uploadedFile
+    })
+    </script>

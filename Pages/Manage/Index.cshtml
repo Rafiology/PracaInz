@@ -1,0 +1,35 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Profil użytkownika";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+}
+
+<h4>@ViewData["Title"]</h4>
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+<p>Oto informacje o Twoim koncie w systemie.</p>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label asp-for="Username">Nazwa użytkownika</label>
+            <input asp-for="Username" class="form-control border-primary" disabled />
+        </div>
+        <div class="form-group">
+            <label asp-for="FirstName">Imię</label>
+            <input asp-for="FirstName" class="form-control border-primary" disabled />
+        </div>
+        <div class="form-group">
+            <label asp-for="LastName">Nazwisko</label>
+            <input asp-for="LastName" class="form-control border-primary" disabled />
+        </div>
+        <div class="form-group">
+            <label asp-for="Role">Rola w systemie</label>
+            <input asp-for="Role" class="form-control border-primary" disabled />
+        </div>
+        <a class="btn btn-primary mb-2" asp-page="/Manage/ChangePassword">Zmień hasło użytkownika</a>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
